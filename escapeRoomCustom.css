@@ -34,7 +34,7 @@
 }
 
 .errorText{
-    color: white;
+    color: red;
     font-size: 45px;
     margin-left: 45%;
 }
