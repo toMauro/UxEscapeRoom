@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Countdown Demo</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:600,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="countdown.demo.css" type="text/css">
+    <link rel="stylesheet" href="escapeRoomCustom.css" type="text/css">
+</head>
+<body>
+
+<div id="content">
+
+        <div class="mainComp">
+            <h1 class="alt-1 clockSpacing" id="mainClock">00:30:00</h1>
+
+            <div id='errorDiv' class="errorDiv hidden">
+                <div id='errorText' class="errorText"> Error </div>
+            </div>
+
+            <input type="textbox" class='form' id="field"/>
+        </div>
+
+    </div>
+</body>
+
+<script src="jquery-3.2.1.min.js"></script>
+<script src="jquery.countdown.js"></script>
+
+<script>
+    window.jQuery(function ($) {
+        "use strict";
+
+        $('.alt-1').countDown({
+            css_class: 'countdown-alt-1'
+        });
+
+        $('#mainClock').on('time.elapsed', function () {
+            var clock = $(document.getElementById('mainClock')),
+                timeoutScreen = $('<div class="timeOutScreen">Time has Expired</div>'),
+                inputBox = $(document.getElementById('field'));
+
+            inputBox.remove();
+            clock.addClass('blink_me');
+            clock.after(timeoutScreen);
+        });
+
+
+        $("#field").keyup(function (event) {
+            var valueEntered,
+                clock = $(document.getElementById('mainClock')),
+                errorDiv = $(document.getElementById('errorDiv')),
+                errorText = $(document.getElementById('errorText')),
+                inputBox = $(document.getElementById('field')),
+                winScreen = $('<div class="VictoryScreen">Congratulations!</div>'),
+                winTime = $('<div class="VictoryTime"></div>'),
+                rawTime = clock[0].innerText,
+                voctiryTimrClean;
+
+
+            if (event.which === 13) {
+                valueEntered = this.value.toLowerCase();
+
+                if(valueEntered === 'apple'){
+                    inputBox.remove();
+
+                    winTime.append(voctiryTimrClean = parseWinTime(rawTime));
+                    winScreen.append(winTime);
+
+                    clock.after(winScreen);
+                    clock.remove();
+                }else{
+                    errorDiv.toggleClass('hidden');
+                    errorDiv.addClass('errorDivAnnimation');
+                    errorText.addClass('blink_me');
+                }
+
+            }else{
+                //toggle error msg
+                if(!errorDiv.hasClass('hidden')){
+                    errorDiv.addClass('hidden');
+                }
+            }
+        });
+
+        var parseWinTime = function(rawTime){
+            var winTimeMsg,
+                rawTimeSplit = rawTime.split(':'),
+                minutes = rawTimeSplit[1],
+                seconds = rawTimeSplit[2];
+
+            minutes = 40 - (parseInt(minutes.split('Minutes')[0])+1);
+            seconds = 60 - seconds.split('Seconds')[0];
+
+            winTimeMsg = "You escaped in: " + minutes + ":" + seconds;
+
+            return winTimeMsg;
+        }
+
+
+    });
+</script>
+
+
+</html>

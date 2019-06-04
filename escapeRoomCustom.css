@@ -1,0 +1,76 @@
+.blink_me {
+    animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+    50% { opacity: 0; }
+}
+
+.timeOutScreen {
+    color: white;
+    text-align: center;
+    font-size: 40px;
+}
+
+.clockSpacing{
+    padding-left: 35%;
+    margin-top: 30%;
+}
+
+.form{
+    margin-left: 45%;
+    margin-top: 30px;
+}
+
+.errorDiv {
+
+}
+
+.errorDivAnnimation{
+    animation: disappear 0s ease-in 3s forwards;
+}
+
+.hidden{
+    display:none;
+}
+
+.errorText{
+    color: white;
+    font-size: 45px;
+    margin-left: 45%;
+}
+
+@keyframes disappear {
+    to {
+        width:0;
+        height:0;
+        overflow:hidden;
+    }
+}
+
+.VictoryScreen{
+    color: white;
+    text-align: center;
+    font-size: 40px;
+    padding-top: 30%;
+}
+
+.VictoryTime{
+    color: white;
+    text-align: center;
+    font-size: 40px;
+}
+
+.mainComp{
+   position: relative;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-image: url('DragonBattle.jpg');
+    background-repeat: no-repeat;
+    background-position: top; 
+}
+
