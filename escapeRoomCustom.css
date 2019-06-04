@@ -71,6 +71,7 @@ body {
     padding: 0;
     background-image: url('subwaymap.jpg');
     background-repeat: no-repeat;
-    background-position: top; 
+    background-attachment: fixed;
+    background-position: center;
 }
 
