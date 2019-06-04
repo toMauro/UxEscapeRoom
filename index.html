@@ -90,10 +90,10 @@
                 minutes = rawTimeSplit[1],
                 seconds = rawTimeSplit[2];
 
-            minutes = 40 - (parseInt(minutes.split('Minutes')[0])+1);
+            minutes = 30 - (parseInt(minutes.split('Minutes')[0])+1);
             seconds = 60 - seconds.split('Seconds')[0];
 
-            winTimeMsg = "You escaped in: " + minutes + ":" + seconds;
+            winTimeMsg = "You escaped in: " + minutes + " minues and " + seconds + " seconds";
 
             return winTimeMsg;
         }
